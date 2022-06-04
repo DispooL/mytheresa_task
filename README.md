@@ -9,10 +9,11 @@ Hello, welcome to my project for this challenge it was really interesting and ch
 # Table of contents
 [Architecture](#Architecture)
 [First approach (implemented)](#1stApproach)
-&nbsp;&nbsp;&nbsp;&nbsp;1. [ProductController](#ProductController)
-&nbsp;&nbsp;&nbsp;&nbsp;2. [Discount calculation](#DiscountCalculation)
-&nbsp;&nbsp;&nbsp;&nbsp;3. [Adding discounts](#AddingDiscount)
-&nbsp;&nbsp;&nbsp;&nbsp;4. [DB & Optimization techniques used](#DB&Optimization)
+1. [ProductController](#ProductController)
+2. [Discount calculation](#DiscountCalculation)
+3. [Adding discounts](#AddingDiscount)
+4. [DB & Optimization techniques used](#DB&Optimization)
+
 [Second approach](#2ndApproach)
 # Architecture
 While I was working on the project, I came up with two solutions to the problem and chose the best one in terms of code beauty as well as system design. I'll go through both of them separately and explain my thoughts. The main difference between the two solutions is the different design of the discount table and products.
