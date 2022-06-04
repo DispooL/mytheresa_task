@@ -8,16 +8,21 @@ Hello, welcome to my project for this challenge it was really interesting and ch
 
 # Table of contents
 [Architecture](#Architecture)
-[First approach (implemented)](#1stApproach)
+[First approach (implemented)](#first-approach)
 1. [ProductController](#ProductController)
-2. [Discount calculation](#DiscountCalculation)
-3. [Adding discounts](#AddingDiscounts)
-4. [DB & Optimization techniques used](#DB&Optimization)
+2. [Discount calculation](#discount-calculation)
+3. [Adding discounts](#adding-discounts)
+4. [DB & Optimization techniques used](#db-and-optimization)
+5. [Tests](#tests)
 
-[Second approach](#2ndApproach)
+[Second approach](#second-approach)
+
+[How to run the project](#how-to-run-the-project)<br/>
+[Permissions Issues](#permissions-issues)<br/>
+[Persistent MySQL storage](#persistent-mysql-storage)
 # Architecture
 While I was working on the project, I came up with two solutions to the problem and chose the best one in terms of code beauty as well as system design. I'll go through both of them separately and explain my thoughts. The main difference between the two solutions is the different design of the discount table and products.
-# 1stApproach
+# First approach
 I thinks this approach is more sophisticated in terms of database design that's why I've chosen it. While solving this problem I tried to make the solution the fastest and most efficient, so as I describe my decisions, I will focus on performance. When designing any system I always try to find out how many daily user the system will have or more simply what's the RPS value will be? This helps to understand how the system should be designed either well balanced or strongly optimized system. I would say that this particular approach is well balanced one but it still can be improved in terms of performance. Let's say that our system doesn't have so many daily users and imagine that RPS value is around 400-600 then the database will look like this
 ![alt text](https://i.ibb.co/ypfmSKM/tables.png)
 
@@ -50,7 +55,7 @@ The endpoint ```/api/products``` is assigned to ```index()``` method in ProductC
     }
 ```
 
-# DiscountCalculation
+# Discount calculation
 Discount calculation is implemented in Product model as two computed fields: final_price, discount_percentage and the algorithm is pretty simple I think. It just takes all the discounts from the relation, finds the biggest one, and calculates the final_price.
 
 ```php
@@ -102,7 +107,7 @@ Discount calculation is implemented in Product model as two computed fields: fin
 
 There is also a little note here final_price always rounded down. For example if the original_price is 1011, discount_percentage is 30, then final_price would be 707 (1011*0.7=707.7). In real life I think I would need to discuss rounding first.
 
-# AddingDiscounts
+# Adding discounts
 
 I have created **DiscountService** for adding discounts to the products, you simple pass a collection of products and then *addProductsDiscount* method creates discounts based on the values provided. I also want to mention that it uses chunk inserting, so instead of directly inserting a row it pushes new discounts to array and when discounts created it inserts it by 500 chunks which significantly increases performance of inserts. However the main disadvantage of this database design (products has many relation to discounts) is that the system or the user should always keep track on already existing discounts which might be not easy when project contains 20,000 products, that's the price we pay for ability to have many discounts for a single product. I didn't add any restrictions for adding discounts for products, but I think a good way to fix this issue would be to add a limit of discounts that product can have and if the limit is exceeded replace the old discount with the one. I also would make it possible for admins to keep track of discounts for every single product, so the admins could remove the ones that outdated and etc.
 
@@ -143,7 +148,7 @@ class DiscountService
 }
 ```
 
-# DB&Optimization
+# DB and Optimization
 I think this database design is clean and good in terms of best practices of designing databases. I have implemented this in Laravel. I have created models: Category, Product, Discount and created an endpoint ```/api/products``` which makes takes items from ```products``` table. Let's see how fast and optimized our app by calling the endpoint.
 
 ![Response time](https://i.ibb.co/xX7YkdT/speed.png)
@@ -180,7 +185,7 @@ For this project I decided to create Feature tests because I found them more use
 docker-compose run artisan test
 ```
 
-# 2ndApproach
+# Second approach
 
 I also come up with the second approach for this challenge it's not much different from the first one but it can be as extension and can be done if the first approach is not enough, because it has this one has it's own performance features. I haven't implemented it due to lack of time, but I think I can describe it here. So, lets imagine that this project is highload and many users often call ```/api/products``` endpoint then I think we need to redesign our DB. First, I always look for bottlenecks, look at log, look at statistics but in this case since I actually don't know anything I assume that current bottleneck is DB and we need to improve it. For now as you remember it takes two queries to DB to get the data for ```/api/products``` endpoint but we can reduce queries by one. In order to do that we will need to redesign products table. We have two queries, and I think we can get rid of selecting discounts, instead I will use [Denormalization technique](https://www.geeksforgeeks.org/denormalization-in-databases/). Products table will have two more columns: final_price, discount percentage. And since that, we don't need to query discounts table anymore because we don't need it, everything stored in products table. A main disadvantage of this approach is that we need to compute final_price and discount_percentage everytime we add a discount, but since it happens not that often I think it's not a big deal. We also won't able to add multiple discounts to a product, instead our system will need to decide which discount to use and fill it in DB. Summarizing all of that we can conclude that according this approach and the fact that ```categories``` table is cached our app will now make only one query to DB per request which is fantastic I think.
 ![Another way of designing DB](https://i.ibb.co/1KpmJ5k/db.png)
