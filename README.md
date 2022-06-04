@@ -17,7 +17,7 @@ Hello, welcome to my project for this challenge it was really interesting and ch
 
 [Second approach](#second-approach)
 
-[How to run the project](#how-to-run-the-project)<br/>
+[How to run the project?](#how-to-run-the-project)<br/>
 [Permissions Issues](#permissions-issues)<br/>
 [Persistent MySQL storage](#persistent-mysql-storage)
 # Architecture
