@@ -11,7 +11,7 @@ Hello, welcome to my project for this challenge it was really interesting and ch
 [First approach (implemented)](#1stApproach)
 1. [ProductController](#ProductController)
 2. [Discount calculation](#DiscountCalculation)
-3. [Adding discounts](#AddingDiscount)
+3. [Adding discounts](#AddingDiscounts)
 4. [DB & Optimization techniques used](#DB&Optimization)
 
 [Second approach](#2ndApproach)
@@ -50,7 +50,7 @@ The endpoint ```/api/products``` is assigned to ```index()``` method in ProductC
     }
 ```
 
-# Discount calculation
+# DiscountCalculation
 Discount calculation is implemented in Product model as two computed fields: final_price, discount_percentage and the algorithm is pretty simple I think. It just takes all the discounts from the relation, finds the biggest one, and calculates the final_price.
 
 ```php
