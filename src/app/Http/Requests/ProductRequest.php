@@ -31,8 +31,8 @@ class ProductRequest extends FormRequest
             // We can use exists:categories,name which will validate if this name exists in DB
             // But it will cost us a query to DB that's I decided not to use it
             'category' => 'string',
-            'price'    => 'integer',
-            'operator' => 'string|in:<,<=,>,>=,=',
+            'price'    => 'required_with:operator|integer',
+            'operator' => 'required_with:price|string|in:<,<=,>,>=,=',
         ];
     }
 

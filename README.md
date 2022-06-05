@@ -18,6 +18,7 @@ Hello, welcome to my project for this challenge it was fascinating and challengi
 [Second approach](#second-approach)
 
 [How to run the project?](#how-to-run-the-project)<br/>
+[Postman collection](#postman-collection)<br/>
 [Permissions Issues](#permissions-issues)<br/>
 [Persistent MySQL storage](#persistent-mysql-storage)
 # Architecture
@@ -202,6 +203,7 @@ docker-compose run --rm composer install
 docker-compose run artisan migrate:fresh --seed
 ```
 
+After running all of the commands, you can navigate to `localhost/api/products` and take a look at the api.
 I know that there are a lot of commands to run the project, while in specification for this challenge the main requirement is to have one command to run this. But I think they pretty simple and everyone can run it.
 
 Bringing up the Docker Compose network with `site` instead of just using `up`, ensures that only our site's containers are brought up at the start, instead of all of the command containers as well. The following are built for our web server, with their exposed ports detailed:
@@ -220,7 +222,10 @@ sudo chmod -R ugo+rw storage
 ```
 That's it! Now you can explore the project.
 
-## Permissions Issues
+# Postman collection
+You also may use the api via [Postman](https://www.postman.com/) I have attached `mytheresa.postman_collection.json` file in the root directory of the project which has the collection of all possible requests that can be made to the api.
+
+# Permissions Issues
 
 If you encounter any issues with filesystem permissions while visiting your application or running a container command, try completing one of the sets of steps below.
 
