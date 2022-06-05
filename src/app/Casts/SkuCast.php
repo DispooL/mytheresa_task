@@ -4,6 +4,9 @@ namespace App\Casts;
 
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 
+/**
+ * SkuCast custom cast for Product model to add leading zeros to sku field
+ */
 class SkuCast implements CastsAttributes
 {
     /**

@@ -25,7 +25,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property float                $original_price
  * @property float                $final_price
  *
- * @property Collection<Discount> $discounts
+ * @property-read Collection<Discount> $discounts
  */
 class Product extends Model
 {

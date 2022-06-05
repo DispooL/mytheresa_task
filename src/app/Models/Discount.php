@@ -12,12 +12,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *
  * Stores data about discounts that related to products
  *
- * @property int    $id
- * @property int    $product_id
- * @property int    $percentage
+ * @property int          $id
+ * @property int          $product_id
+ * @property int          $percentage
  *
- * @property Carbon $created_at
- * @property Carbon $updated_at
+ * @property Carbon       $created_at
+ * @property Carbon       $updated_at
+ *
+ * @property-read Product $product
  */
 class Discount extends Model
 {

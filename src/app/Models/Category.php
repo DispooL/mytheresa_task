@@ -14,14 +14,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * Stores categories
  * The model is cached in Redis by default
  *
- * @property int                 $id
+ * @property int                      $id
  *
- * @property string              $name
+ * @property string                   $name
  *
- * @property Carbon              $created_at
- * @property Carbon              $updated_at
+ * @property Carbon                   $created_at
+ * @property Carbon                   $updated_at
  *
- * @property Collection<Product> $products
+ * @property-read Collection<Product> $products
  */
 class Category extends CachedModel
 {

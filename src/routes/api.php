@@ -18,4 +18,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// Products list endpoint
 Route::get('/products', [\App\Http\Controllers\ProductController::class, 'index']);
