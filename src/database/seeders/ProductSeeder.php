@@ -60,6 +60,13 @@ class ProductSeeder extends Seeder
                     'original_price' => 59000,
                     'currency'       => 'EUR',
                 ],
+                [
+                    'sku'            => 6,
+                    'name'           => 'Sandals',
+                    'category_id'    => $categories->where('name', 'sandals')->first()->id,
+                    'original_price' => 70000,
+                    'currency'       => 'EUR',
+                ],
             ]
         );
     }

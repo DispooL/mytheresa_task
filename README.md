@@ -20,7 +20,6 @@ Hello, welcome to my project for this challenge it was fascinating and challengi
 [How to run the project?](#how-to-run-the-project)<br/>
 [Postman collection](#postman-collection)<br/>
 [Permissions Issues](#permissions-issues)<br/>
-[Persistent MySQL storage](#persistent-mysql-storage)
 # Architecture
 While I was working on the project, I came up with two solutions to the problem and chose the best one in terms of code beauty as well as system design. I'll go through both of them separately and explain my thoughts. The main difference between the two solutions is the different designs of the discount table and products.
 # First approach
@@ -245,15 +244,3 @@ If you encounter any issues with filesystem permissions while visiting your appl
 - Re-build the containers by running `docker-compose build --no-cache`
 
 Then, either bring back up your container network or re-run the command you were trying before, and see if that fixes it.
-
-## Persistent MySQL Storage
-
-By default, whenever you bring down the Docker network, your MySQL data will be removed after the containers are destroyed. If you would like to have persistent data that remains after bringing containers down and back up, do the following:
-
-1. Create a `mysql` folder in the project root, alongside the `nginx` and `src` folders.
-2. Under the mysql service in your `docker-compose.yml` file, add the following lines:
-
-```
-volumes:
-  - ./mysql:/var/lib/mysql
-```
