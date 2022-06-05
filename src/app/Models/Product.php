@@ -15,15 +15,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  *
  * Stores data about product and also contains computed fields
  *
- * @property int                  $id
- * @property int                  $category_id
- * @property int                  $discount_percentage
+ * @property int                       $id
+ * @property int                       $category_id
+ * @property int                       $discount_percentage
  *
- * @property string               $sku
- * @property string               $name
+ * @property string                    $sku
+ * @property string                    $name
  *
- * @property float                $original_price
- * @property float                $final_price
+ * @property float                     $original_price
+ * @property float                     $final_price
  *
  * @property-read Collection<Discount> $discounts
  */
@@ -39,7 +39,7 @@ class Product extends Model
     ];
 
     protected $casts = [
-        'sku'            => SkuCast::class,
+        'sku' => SkuCast::class,
     ];
 
     protected $appends = [
@@ -73,7 +73,7 @@ class Product extends Model
     {
         $discountPercentage = $this->calculateDiscountPercentage();
 
-        return $discountPercentage ? $discountPercentage .'%' : null;
+        return $discountPercentage ? $discountPercentage . '%' : null;
     }
 
     /**
