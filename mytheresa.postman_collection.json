@@ -128,6 +128,12 @@
 							"key": "price",
 							"value": "80000",
 							"description": "Price for which you want to apply filter"
+						},
+						{
+							"key": "operator",
+							"value": "<",
+							"description": "Filter operator: <, <=, >, >=, =",
+							"disabled": true
 						}
 					]
 				},
