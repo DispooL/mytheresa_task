@@ -13,7 +13,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost/api/products?category=boots&price=80000&operator=<=&page=1",
+					"raw": "http://localhost/api/products?category=boots&price=100000&operator=<=&page=1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -30,7 +30,7 @@
 						},
 						{
 							"key": "price",
-							"value": "80000",
+							"value": "100000",
 							"description": "Price for which you want to apply filter"
 						},
 						{

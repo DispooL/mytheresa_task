@@ -72,8 +72,8 @@ class ProductTest extends TestCase
         $this->assertExactValidationRules(
             [
                 'category' => 'string',
-                'price'    => 'integer',
-                'operator' => 'string|in:<,<=,>,>=,=',
+                'price'    => 'required_with:operator|integer',
+                'operator' => 'required_with:price|string|in:<,<=,>,>=,=',
             ],
             (new ProductRequest())->rules()
         );

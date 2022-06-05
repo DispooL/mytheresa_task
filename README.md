@@ -153,6 +153,7 @@ class DiscountService
 I think this database design is clean and good in terms of best practices of designing databases. I have implemented this in Laravel. I have created models: Category, Product, Discount and created an endpoint ```/api/products``` which makes takes items from ```products``` table. Let's see how fast and optimized our app by calling the endpoint.
 
 ![Response time](https://i.ibb.co/xX7YkdT/speed.png)
+
 It took only 125ms to run this endpoint looks great, doesn't it? Well, the response time is really fast but let's also take a look at DB query log.
 
 ![Query log](https://i.ibb.co/SVb2CVg/queries.png)
@@ -181,8 +182,9 @@ From this, we can see that since product_id is an index the DB engine uses the i
 
 # Tests
 
-For this project I decided to create Feature tests because I found them more useful. There are not many of them, but I think that they cover all the necessary functionality of the project. You can find them in ```src/tests/Feature``` directory. To run tests simply run this command
+For this project I decided to create Feature tests because I found them more useful. There are not many of them, but I think that they cover all the necessary functionality of the project. You can find them in ```src/tests/Feature``` directory. To run tests simply run this commands
 ```console
+cd src
 docker-compose run artisan test
 ```
 
@@ -195,7 +197,7 @@ I also come up with the second approach for this challenge it's not much differe
 
 To get started, make sure you have [Docker installed](https://docs.docker.com/docker-for-mac/install/) on your system, and then clone this repository.
 
-Next, navigate in your terminal to the directory you cloned this, and run following commands. It may take some, please be patient.
+Next, navigate in your terminal to the directory you cloned this, and run following commands. It may take some time, please be patient.
 ```console
 docker-compose up -d --build site
 cd src
@@ -223,7 +225,7 @@ sudo chmod -R ugo+rw storage
 That's it! Now you can explore the project.
 
 # Postman collection
-You also may use the api via [Postman](https://www.postman.com/) I have attached `mytheresa.postman_collection.json` file in the root directory of the project which has the collection of all possible requests that can be made to the api.
+You may also use the api via [Postman](https://www.postman.com/) I have attached `mytheresa.postman_collection.json` file in the root directory of the project which has the collection of all possible requests that can be made to the api.
 
 # Permissions Issues
 
