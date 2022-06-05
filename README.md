@@ -217,6 +217,7 @@ If you have any permission issues with storage folder and logs, simply run this 
 ```console
 sudo chmod -R ugo+rw storage
 ```
+That's it! Now you can explore the project.
 
 ## Permissions Issues
 
