@@ -194,9 +194,9 @@ I also come up with the second approach for this challenge it's not much differe
 
 To get started, make sure you have [Docker installed](https://docs.docker.com/docker-for-mac/install/) on your system, and then clone this repository.
 
-Next, navigate in your terminal to the directory you cloned this, and run following commands
+Next, navigate in your terminal to the directory you cloned this, and run following commands. It may take some, please be patient.
 ```console
-docker-compose up -d build site
+docker-compose up -d --build site
 cd src
 docker-compose run --rm composer install
 docker-compose run artisan migrate:fresh --seed
