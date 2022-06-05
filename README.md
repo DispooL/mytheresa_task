@@ -194,7 +194,15 @@ I also come up with the second approach for this challenge it's not much differe
 
 To get started, make sure you have [Docker installed](https://docs.docker.com/docker-for-mac/install/) on your system, and then clone this repository.
 
-Next, navigate in your terminal to the directory you cloned this, and spin up the containers for the web server by running `docker-compose up -d --build site`.
+Next, navigate in your terminal to the directory you cloned this, and run following commands
+```console
+docker-compose up -d build site
+cd src
+docker-compose run --rm composer install
+docker-compose run artisan migrate:fresh --seed
+```
+
+I know that there are a lot of commands to run the project, while in specification for this challenge the main requirement is to have one command to run this. But I think they pretty simple and everyone can run it.
 
 Bringing up the Docker Compose network with `site` instead of just using `up`, ensures that only our site's containers are brought up at the start, instead of all of the command containers as well. The following are built for our web server, with their exposed ports detailed:
 
@@ -204,13 +212,6 @@ Bringing up the Docker Compose network with `site` instead of just using `up`, e
 - **redis** - `:6379`
 - **mailhog** - `:8025`
 
-Use the following commands to init the project, but **make sure you are in src folder**.
-
-```console
-cd src
-docker-compose run --rm composer install
-docker-compose run artisan migrate:fresh --seed
-```
 Note that you need to run `docker-compose run artisan migrate:fresh --seed` **every time you start a container** because database is not consistent.
 
 If you have any permission issues with storage folder and logs, simply run this command.
