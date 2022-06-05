@@ -1,0 +1,139 @@
+{
+	"info": {
+		"_postman_id": "33f50290-4fa4-4a8f-afd1-c7fc55156ff9",
+		"name": "mytheresa",
+		"description": "This collection contains all the variations of possible combinations of filters that can be applied to the api.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3912450"
+	},
+	"item": [
+		{
+			"name": "products with all filters",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/api/products?category=boots&price=80000&operator=<=&page=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"products"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "boots",
+							"description": "Product category (boots, sneakers, sandals)"
+						},
+						{
+							"key": "price",
+							"value": "80000",
+							"description": "Price for which you want to apply filter"
+						},
+						{
+							"key": "operator",
+							"value": "<=",
+							"description": "Filter operator: <, <=, >, >=, ="
+						},
+						{
+							"key": "page",
+							"value": "1",
+							"description": "Page number"
+						}
+					]
+				},
+				"description": "Here I've used all the filters that can be possibly used. You can try to use them yourself"
+			},
+			"response": []
+		},
+		{
+			"name": "products in sneakers category",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/api/products?category=sneakers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"products"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "sneakers",
+							"description": "Product category (boots, sneakers, sandals)"
+						}
+					]
+				},
+				"description": "Example of filtering products by category"
+			},
+			"response": []
+		},
+		{
+			"name": "products filtered by price",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/api/products?price=80000&operator=<=",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"products"
+					],
+					"query": [
+						{
+							"key": "price",
+							"value": "80000",
+							"description": "Price for which you want to apply filter"
+						},
+						{
+							"key": "operator",
+							"value": "<=",
+							"description": "Filter operator: <, <=, >, >=, ="
+						}
+					]
+				},
+				"description": "Example of filtering products by price less than 800 EUR"
+			},
+			"response": []
+		},
+		{
+			"name": "products with validation error",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/api/products?price=80000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"products"
+					],
+					"query": [
+						{
+							"key": "price",
+							"value": "80000",
+							"description": "Price for which you want to apply filter"
+						}
+					]
+				},
+				"description": "When you pass only the price you'll recieve a validation error, because you also need to pass operator value"
+			},
+			"response": []
+		}
+	]
+}
