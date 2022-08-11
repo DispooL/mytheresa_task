@@ -1,5 +1,6 @@
 # Challenge
-Hello, welcome to my project for this challenge it was fascinating and challenging to work on this project, eventually, I've come up with different solutions, so I will try to explain both of them below.
+Hello, welcome to my project for this challenge it was fascinating and challenging to work on this project, eventually, I've come up with different solutions, so I will try to explain both of them below. The task is to implement a REST API endpoint that given a list of products, applies some discounts to them
+and can be filtered.
 # Tools
 - **Programming language** PHP 8.1
 - **Framework** [Laravel 9](https://laravel.com/)
